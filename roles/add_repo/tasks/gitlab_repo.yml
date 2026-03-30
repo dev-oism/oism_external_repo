@@ -4,8 +4,8 @@
 - name: Gitlab_repo | Configure gitlab repo
   notify: Clean dnf cache
   ansible.builtin.copy:
-    src: files/docker-ce.repo
-    dest: /etc/yum.repos.d/docker-ce.repo
+    src: files/gitlab_repo.yml
+    dest: /etc/yum.repos.d/gitlab.repo
     mode: '0644'
     owner: root
 
