@@ -1,0 +1,22 @@
+---
+# tasks file for oism.external_repo.add_repo
+
+- name: Import tasks from chrome_repo.yml
+  ansible.builtin.import_tasks:
+    file: chrome_repo.yml
+
+- name: Import tasks from docker_repo.yml
+  ansible.builtin.import_tasks:
+    file: docker_repo.yml
+
+- name: Import tasks from gitlab_repo.yml
+  ansible.builtin.import_tasks:
+    file: gitlab_repo.yml
+
+- name: Import tasks from vscode_repo.yml
+  ansible.builtin.import_tasks:
+    file: vscode_repo.yml
+
+- name: Import tasks from zabbix_repo.yml
+  ansible.builtin.import_tasks:
+    file: zabbix_repo.yml

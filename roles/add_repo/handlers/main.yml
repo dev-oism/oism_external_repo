@@ -1,0 +1,6 @@
+---
+# handlers file for oism.external_repo.add_repo
+
+- name: Clean dnf cache
+  ansible.builtin.dnf:
+    update_cache: true

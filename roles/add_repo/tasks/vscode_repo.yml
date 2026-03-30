@@ -1,0 +1,15 @@
+---
+# tasks file for oism.external_repo.add_repo.vscode_repo.yml
+
+- name: VSCode_repo | Configure vscode repo
+  notify: Clean dnf cache
+  ansible.builtin.copy:
+    src: files/vscode.repo
+    dest: /etc/yum.repos.d/vscode.repo
+    mode: '0644'
+    owner: root
+
+- name: VSCode_repo | Ensure gpg keys are present
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc

@@ -1,0 +1,15 @@
+---
+# tasks file for oism.external_repo.add_repo.docker_repo.yml
+
+- name: Docker_repo | Configure docker repo
+  notify: Clean dnf cache
+  ansible.builtin.copy:
+    src: files/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: '0644'
+    owner: root
+
+- name: Docker_repo | Ensure gpg key is present
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://download.docker.com/linux/rhel/gpg

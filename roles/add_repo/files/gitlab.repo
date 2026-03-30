@@ -1,0 +1,25 @@
+[gitlab]
+name=gitlab
+baseurl=https://packages.gitlab.com/gitlab/gitlab-ce/el/9/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gpgkey/gpg.key
+       https://packages.gitlab.com/gpgkey/gitlab/3D645A26AB9FBD22.pub.gpg
+       https://packages.gitlab.com/gpgkey/gitlab/CB947AD886C8E8FD.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[gitlab-runner]
+name=gitlab-runner
+baseurl=https://packages.gitlab.com/runner/gitlab-runner/el/9/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gpgkey/gpg.key
+       https://packages.gitlab.com/gpgkey/runner/49F16C5CC3A0F81F.pub.gpg
+       https://packages.gitlab.com/gpgkey/runner/4C80FB51394521E9.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300

@@ -1,0 +1,21 @@
+---
+# tasks file for oism.external_repo.add_repo.gitlab_repo.yml
+
+- name: Gitlab_repo | Configure gitlab repo
+  notify: Clean dnf cache
+  ansible.builtin.copy:
+    src: files/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: '0644'
+    owner: root
+
+- name: Gitlab_repo | Ensure gpg keys are present
+  loop:
+    - https://packages.gitlab.com/gpgkey/gpg.key
+    - https://packages.gitlab.com/gpgkey/gitlab/3D645A26AB9FBD22.pub.gpg
+    - https://packages.gitlab.com/gpgkey/gitlab/CB947AD886C8E8FD.pub.gpg
+    - https://packages.gitlab.com/gpgkey/runner/49F16C5CC3A0F81F.pub.gpg
+    - https://packages.gitlab.com/gpgkey/runner/4C80FB51394521E9.pub.gpg
+  ansible.builtin.rpm_key:
+    state: present
+    key: "{{ item }}"

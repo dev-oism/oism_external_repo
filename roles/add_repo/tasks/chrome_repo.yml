@@ -1,0 +1,15 @@
+---
+# tasks file for oism.external_repo.add_repo.chrome_repo.yml
+
+- name: Chrome_repo | Configure Chrome repo
+  notify: Clean dnf cache
+  ansible.builtin.copy:
+    src: files/chrome.repo
+    dest: /etc/yum.repos.d/chrome.repo
+    mode: '0644'
+    owner: root
+
+- name: Docker_repo | Ensure gpg key is present
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://dl.google.com/linux/linux_signing_key.pub

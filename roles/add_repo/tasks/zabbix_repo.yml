@@ -1,0 +1,19 @@
+---
+# tasks file for oism.external_repo.add_repo.zabbix_repo.yml
+
+- name: zabbix_repo | Install zabbix repo from offical rpm
+  notify: Clean dnf cache
+  ansible.builtin.dnf:
+    name:
+      - https://repo.zabbix.com/zabbix/7.0/alma/9/x86_64/zabbix-release-latest-7.0.el9.noarch.rpm
+    state: present
+
+- name: zabbix_repo | Ensure zabbix 7 gpg key is present
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005
+
+- name: zabbix_repo | Ensure zabbix-tools gpg key is present
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-TOOLS
