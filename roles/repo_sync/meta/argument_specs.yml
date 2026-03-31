@@ -1,0 +1,11 @@
+---
+# argument spec file for oism.external_repo.repo_sync
+
+argument_specs:
+  main:
+    short_description: Role description.
+    options:
+      repo_sync_my_variable:
+        type: str
+        description: A simple string argument for demonstration.
+        default: "default_value"
