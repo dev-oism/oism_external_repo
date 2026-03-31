@@ -1,0 +1,21 @@
+---
+# tasks file for oism.external_repo.repo_sync
+
+- name: Ensure Almalinux and Zabbix repos are synced
+  ansible.builtin.command:
+    cmd: dnf reposync --arch=x86_64,noarch --destdir="{{ repo_sync_dest_dir }}" --download-metadata  --remote-time --delete --repoid=appstream,baseos,zabbix,zabbix-tools --gpgcheck
+
+- name: Ensure VSCode,docker,gitlab, and gitlab-runner repos are synced
+  ansible.builtin.command:
+    cmd: dnf reposync --arch=x86_64,noarch --destdir="{{ repo_sync_dest_dir }}" --remote-time --repoid=code,gitlab,gitlab-runner,google-chrome,docker-ce-stable --newest-only --gpgcheck
+
+- name: Generate metadata for repos with --newest-only
+  loop:
+    - code
+    - gitlab
+    - gitlab-runner
+    - google-chrome
+    - docker-ce-stable
+  ansible.builtin.command:
+    cmd: createrepo "{{ repo_sync_dest_dir }}"/"{{ item }}"
+
