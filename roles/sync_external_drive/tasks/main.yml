@@ -1,0 +1,28 @@
+---
+# tasks file for oism.external_repo.sync_external_drive
+
+- name: Ensure directory is present "{{ sync_external_drive_mount_path }}"
+  ansible.builtin.file:
+    path: "{{ sync_external_drive_mount_path }}"
+    state: directory
+    mode: "0644"
+    owner: root
+
+- name: Mount external drive by uuid
+  ansible.posix.mount:
+    path: "{{ sync_external_drive_mount_path }}"
+    state: mounted
+    src: "UUID={{ mount_device_uuid }}"
+    fstype: exfat
+
+- name: Syncronize repos and external drive
+  ansible.posix.synchronize:
+    src: "{{ repo_sync_dest_dir }}"
+    dest: "{{ sync_external_drive_mount_path }}"
+    archive: false
+    recursive: true
+    perms: false
+    times: true
+    owner: false
+    group: false
+    delete: true

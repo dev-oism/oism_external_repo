@@ -1,0 +1,17 @@
+---
+# argument spec file for oism.external_repo.sync_external_drive
+
+argument_specs:
+  main:
+    short_description: This role is to configure an external drive to facilitate airgapping packages.
+    options:
+      sync_external_drive_mount_path:
+        description: Where the device will be mounted
+        required: true
+        type: path
+        default: /mnt/external_drive
+      sync_external_drive_mount_device_uuid:
+        description: The UUID string of the device. Found by running `sudo blkid`. Include `UUID=` portion
+        required: true
+        type: str
+        default: UUID="70A8-20C6"
