@@ -1,0 +1,11 @@
+---
+# defaults file for oism.external_repo.sync_external_drive
+
+# Variable that will be displayed in debug output
+# This demonstrates proper role variable naming with the 'run_' prefix
+sync_external_drive_mount_path: /mnt/external_drive
+
+# Can be found by running sudo blkid when the external drive is connected.
+# Example 1: UUID="70A8-20C6"
+# Example 2: UUID="258ae31f-7519-49f9-92cd-6077d885f591"
+sync_external_drive_mount_device_uuid: UUID="70A8-20C6"
