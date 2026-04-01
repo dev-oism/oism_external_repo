@@ -1,0 +1,17 @@
+---
+# tasks file for oism.external_repo.gpg_keys
+
+- name: Ensure keys directory is present
+  ansible.builtin.file:
+    path: "{{ gpg_keys_dir }}"
+    mode: "0644"
+    owner: "{{ ansible_user }}"
+    state: directory
+
+- name: Ensure gpgkeys are present
+  loop: "{{ gpg_keys_required }}"
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+    owner: "{{ ansible_user }}"
