@@ -1,0 +1,53 @@
+---
+# defaults file for oism.external_repo.gpg_keys
+
+# Variable that will be displayed in debug output
+# This demonstrates proper role variable naming with the 'run_' prefix
+gpg_keys_my_variable: "default_value"
+
+gpg_keys_dir: "{{ repo_sync_dest_dir }}/keys"
+gpg_keys_required:
+  - {
+    url: https://packages.gitlab.com/gpgkey/gpg.key,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Gitlab"
+  }
+  - {
+    url: https://packages.gitlab.com/gpgkey/gitlab/3D645A26AB9FBD22.pub.gpg,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Gitlab-3D645"
+  }
+  - {
+    url: https://packages.gitlab.com/gpgkey/gitlab/CB947AD886C8E8FD.pub.gpg,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Gitlab-CB947"
+  }
+  - {
+    url: https://packages.gitlab.com/gpgkey/runner/49F16C5CC3A0F81F.pub.gpg,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Gitlab-Runner-49F16"
+  }
+  - {
+    url: https://packages.gitlab.com/gpgkey/runner/4C80FB51394521E9.pub.gpg,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Gitlab-Runner-4C80F"
+  }
+  - {
+    url: https://dl.google.com/linux/linux_signing_key.pub,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Google-Chrome"
+  }
+  - {
+    url: https://download.docker.com/linux/rhel/gpg,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-Docker"
+  }
+  - {
+    url: https://packages.microsoft.com/keys/microsoft.asc,
+    dest: "{{ gpg_keys_dir }}/RPM-GPG-KEY-VSCode"
+  }
+  - {
+    url: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX,
+    dest: "{{ gpg_keys_dir }}"
+  }
+  - {
+    url: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005,
+    dest: "{{ gpg_keys_dir }}"
+  }
+  - {
+    url: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-TOOLS,
+    dest: "{{ gpg_keys_dir }}"
+  }
