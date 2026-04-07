@@ -51,3 +51,7 @@ gpg_keys_required:
     url: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-TOOLS,
     dest: "{{ gpg_keys_dir }}"
   }
+  - {
+    url: https://repo.almalinux.org/almalinux/RPM-GPG-KEY-AlmaLinux-9,
+    dest: "{{ gpgkeys_dir }}"
+  }
