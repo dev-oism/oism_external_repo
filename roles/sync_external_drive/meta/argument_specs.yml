@@ -9,9 +9,7 @@ argument_specs:
         description: Where the device will be mounted
         required: true
         type: path
-        default: /mnt/external_drive
       sync_external_drive_mount_device_uuid:
         description: The UUID string of the device. Found by running `sudo blkid`. Include `UUID=` portion
         required: true
         type: str
-        default: UUID="70A8-20C6"
