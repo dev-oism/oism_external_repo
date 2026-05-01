@@ -9,6 +9,11 @@
   ansible.builtin.command:
     cmd: dnf reposync --arch=x86_64,noarch --destdir="{{ repo_sync_dest_dir }}" --remote-time --repoid=code,gitlab,gitlab-runner,google-chrome,docker-ce-stable --newest-only --gpgcheck
 
+- name: Ensure createrepo is installed
+  ansible.builtin.package:
+    name: createrepo_c
+    state: present
+
 - name: Generate metadata for repos with --newest-only
   loop:
     - code
@@ -18,4 +23,3 @@
     - docker-ce-stable
   ansible.builtin.command:
     cmd: createrepo "{{ repo_sync_dest_dir }}"/"{{ item }}"
-
