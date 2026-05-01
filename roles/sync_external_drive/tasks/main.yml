@@ -12,7 +12,7 @@
   ansible.posix.mount:
     path: "{{ sync_external_drive_mount_path }}"
     state: mounted
-    src: "UUID={{ mount_device_uuid }}"
+    src: "{{ sync_external_drive_mount_device_uuid }}"
     fstype: exfat
 
 - name: Syncronize repos and external drive
