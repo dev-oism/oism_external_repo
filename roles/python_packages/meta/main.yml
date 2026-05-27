@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  author: foo
+  description: oism.external_repo python_packages Role
+  company: oism
+  license: GPL-2.0-or-later
+  min_ansible_version: "2.14"
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - python
+    - packages
+    - pip
+    - archive
+
+dependencies: []

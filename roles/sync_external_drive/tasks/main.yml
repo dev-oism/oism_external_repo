@@ -6,7 +6,7 @@
     path: "{{ sync_external_drive_mount_path }}"
     state: directory
     mode: "0644"
-    owner: root
+    owner: "{{ ansible_user }}"
 
 - name: Mount external drive by uuid
   ansible.posix.mount:

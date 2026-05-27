@@ -1,0 +1,19 @@
+---
+# tasks file for oism.external_repo.python_packages
+
+- name: Ensure required python packages are present
+  ansible.builtin.command:
+    creates: "{{ python_packages_dest_dir }}/download-{{ now(fmt='%Y-%m-%d_%H:%M:%S') }}.log"
+    cmd: >
+      pip download "{{ python_packages_list }}"
+      --dest "{{ python_packages_download_dir }}"
+      > "{{ python_packages_dest_dir }}/download-{{ now(fmt='%Y-%m-%d_%H:%M:%S') }}.log"
+
+- name: Create tarball
+  community.general.archive:
+    path:
+      - "{{ python_packages_download_dir }}"
+    dest: "{{ python_packages_dest_dir }}/{{ python_packages_tar_name }}"
+    format: gz
+    mode: '0777'
+    owner: "{{ ansible_user }}"
