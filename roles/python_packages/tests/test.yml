@@ -1,0 +1,33 @@
+- name: Test python_packages role
+  hosts: localhost
+  become: true
+  gather_facts: true
+  vars:
+    python_packages_download_dir: /tmp/python_packages
+    python_packages_tar_name: "python-packages.tar.gz"
+    python_packages_dest_dir: /srv/repos
+    python_packages_list: "ansible ansible-dev-tools ansible-lint antsibull-changelog antsibull-build antsibull-docs"
+    ansible_user: root
+
+
+  tasks:
+
+    - name: Create tarball
+      community.general.archive:
+        path:
+          - "{{ python_packages_download_dir }}"
+        dest: "{{ python_packages_dest_dir }}/{{ python_packages_tar_name }}"
+        format: gz
+        mode: '0777'
+        owner: "{{ ansible_user }}"
+
+    - name: Check tarball was created
+      ansible.builtin.stat:
+        path: "{{ python_packages_dest_dir }}/{{ python_packages_tar_name }}"
+      register: python_packages_tarball_stat
+
+    - name: Assert tarball exists
+      ansible.builtin.assert:
+        that:
+          - python_packages_tarball_stat.stat.exists
+          - python_packages_tarball_stat.stat.isreg

@@ -1,0 +1,18 @@
+---
+# defaults file for oism.external_repo.python_packages
+
+# Variable that will be displayed in debug output
+# This demonstrates proper role variable naming with the 'run_' prefix
+python_packages_my_variable: "default_value"
+
+python_packages_download_dir: /tmp/python_packages
+python_packages_tar_name: "python-packages.tar.gz"
+python_packages_dest_dir: /srv/repos
+python_packages_list:
+  - ansible
+  - ansible-dev-tools
+  - ansible-lint
+  - antsibull-changelog
+  - antsibull-build
+  - antsibull-docs
+  - passlib
