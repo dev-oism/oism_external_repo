@@ -27,13 +27,13 @@ jobs:
         run: npm install -g \
           conventional-changelog-conventionalcommits \    
           semantic-release \
-          @semantic-release/gitlab \
-          @semantic-release/changelog \
-          @semantic-release/exec \
-          @semantic-release/git \
-          @semantic-release/commit-analyzer \
-          @semantic-release/release-notes-generator \
-          @codedependant/semantic-release-docker
+            @semantic-release/gitlab \
+            @semantic-release/changelog \
+            @semantic-release/exec \
+            @semantic-release/git \
+            @semantic-release/commit-analyzer \
+            @semantic-release/release-notes-generator \
+            @codedependant/semantic-release-docker
           
       - name: Run semantic-release
         env:
