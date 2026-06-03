@@ -29,8 +29,7 @@
             {
                 "assets": [
                     {
-                        "path": "*.tar.gz",
-                        "label": "Ansible Collection v${nextRelease.version}"
+                        "path": "*.tar.gz"
                     }
                 ]
             }
